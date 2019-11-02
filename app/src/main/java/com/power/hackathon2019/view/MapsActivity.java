@@ -9,6 +9,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.power.hackathon2019.R;
@@ -51,6 +52,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Mount Pearl and move the camera
+        LatLng marker1 = new LatLng(47.520353, -52.806221);
+        googleMap.addMarker(new MarkerOptions().position(marker1)
+                .title("Fire Hydrant")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.hydrant25)));
 
         //mMap.addMarker(new MarkerOptions().position(mountPearl).title("Marker in Mount Pearl"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(mountPearl.getLatLng()));
