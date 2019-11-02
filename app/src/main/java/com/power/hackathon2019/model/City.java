@@ -1,7 +1,7 @@
 package com.power.hackathon2019.model;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.power.hackathon2019.controller.CSVReader;
+import com.power.hackathon2019.controller.StreetBuilder;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,15 +38,11 @@ public class City
 
     public void initalizeCity(String file)
     {
-        this.initializeStreets(CSVReader.readCSV(file));
+        this.initializeStreets(StreetBuilder.createStreetsFromCSV(file));
     }
 
-    private void initializeStreets(Collection<String> streetNames)
+    private void initializeStreets(Collection<Street> streets)
     {
-        this.streets = new ArrayList<>();
-        for (String streetName : streetNames)
-        {
-            this.streets.add(new Street(streetName));
-        }
+        this.streets = new ArrayList<>(streets);
     }
 }

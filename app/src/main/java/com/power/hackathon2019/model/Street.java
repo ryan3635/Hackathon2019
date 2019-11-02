@@ -10,6 +10,11 @@ public class Street
     private ArrayList<Marker> markers;
     private String streetName;
 
+    public Street()
+    {
+
+    }
+
     public Street(String streetName)
     {
         this.streetName = streetName;
