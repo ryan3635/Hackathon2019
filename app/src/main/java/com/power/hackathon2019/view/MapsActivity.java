@@ -1,5 +1,6 @@
-package com.power.hackathon2019;
+package com.power.hackathon2019.view;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
@@ -10,13 +11,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.power.hackathon2019.R;
+import com.power.hackathon2019.model.City;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -36,13 +40,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap)
+    {
+        LatLng mountPearlLatLng = new LatLng(47.519467, -52.800441);
+        City mountPearl = new City(mountPearlLatLng);
+
         mMap = googleMap;
 
         // Add a marker in Mount Pearl and move the camera
-        LatLng mountPearl = new LatLng(47.519467, -52.800441);
+
         //mMap.addMarker(new MarkerOptions().position(mountPearl).title("Marker in Mount Pearl"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(mountPearl));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mountPearl.getLatLng()));
         mMap.setMinZoomPreference(13.5f);
         mMap.setMaxZoomPreference(22.0f);
     }
