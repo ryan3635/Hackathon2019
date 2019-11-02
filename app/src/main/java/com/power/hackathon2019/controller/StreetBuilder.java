@@ -1,7 +1,7 @@
 package com.power.hackathon2019.controller;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.power.hackathon2019.model.Marker;
+import com.power.hackathon2019.model.Hydrant;
 import com.power.hackathon2019.model.Street;
 
 import java.io.BufferedReader;
@@ -42,7 +42,7 @@ public class StreetBuilder
                         String markerName = streetName + " " + String.valueOf((i / 2));
                         LatLng markerLatLng = new LatLng(Double.parseDouble(streetLine[i]),
                                 Double.parseDouble(streetLine[i+1]));
-                        street.addMarker(new Marker(markerName, markerLatLng));
+                        street.addMarker(new Hydrant(markerName, markerLatLng));
                         i = i + 2;
                     }
                 }

@@ -4,32 +4,30 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Marker
 {
-    private LatLng latlng;
-    private String markerName = "Fire Hydrant";
+    private LatLng latLng;
+    private String markerName;
+    private MarkerStatus markerStatus;
 
-    public Marker (String markerName, LatLng latlng)
+
+    public Marker(String markerName, LatLng latLng)
     {
         this.markerName = markerName;
-        this.latlng = latlng;
+        this.latLng = latLng;
+        this.markerStatus = MarkerStatus.SNOW_COVERED;
     }
 
-    public Marker (LatLng latlng)
+    public LatLng getLatLng()
     {
-        this.latlng = latlng;
-    }
-
-    public Marker (double lat, double lng)
-    {
-        this.latlng = new LatLng(lat, lng);
-    }
-
-    public LatLng getLatlng()
-    {
-        return latlng;
+        return latLng;
     }
 
     public String getMarkerName()
     {
         return markerName;
+    }
+
+    public MarkerStatus getMarkerStatus()
+    {
+        return markerStatus;
     }
 }
