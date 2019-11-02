@@ -1,12 +1,14 @@
 package com.power.hackathon2019.model;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.power.hackathon2019.controller.CSVReader;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class City
 {
-    private ArrayList<Road> roads;
+    private ArrayList<Street> streets;
     private LatLng latLng;
 
     public City()
@@ -29,14 +31,22 @@ public class City
         return latLng;
     }
 
-    public ArrayList<Road> getRoads()
+    public ArrayList<Street> getStreets()
     {
-        return this.roads;
+        return this.streets;
     }
 
-    public void initializeRoads()
+    public void initalizeCity(String file)
     {
-        this.roads = new ArrayList<>();
-        //create roads
+        this.initializeStreets(CSVReader.readCSV(file));
+    }
+
+    private void initializeStreets(Collection<String> streetNames)
+    {
+        this.streets = new ArrayList<>();
+        for (String streetName : streetNames)
+        {
+            this.streets.add(new Street(streetName));
+        }
     }
 }

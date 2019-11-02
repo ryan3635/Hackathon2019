@@ -4,13 +4,20 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-public class Road
+public class Street
 {
     private LatLng latLng;
     private ArrayList<Marker> markers;
+    private String streetName;
 
-    public Road(LatLng latLng)
+    public Street(String streetName)
     {
+        this.streetName = streetName;
+    }
+
+    public Street(String streetName, LatLng latLng)
+    {
+        this.streetName = streetName;
         this.latLng = latLng;
         this.markers = new ArrayList<>();
     }

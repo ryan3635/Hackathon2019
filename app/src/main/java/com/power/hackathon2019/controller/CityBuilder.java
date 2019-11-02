@@ -7,18 +7,18 @@ import java.io.Serializable;
 
 public class CityBuilder implements Serializable
 {
-    private City city;
-    private final String streetName = "streetnames.csv";
+    private final String streetNames = "../app/resources/streetnames.csv";
 
     public CityBuilder()
     {
-        this.city = new City();
     }
 
-    public void initalizeCity(double lat, double lng)
+    public City buildCity(LatLng latLng)
     {
-        LatLng latLng = new LatLng(lat, lng);
-        city.setLatLng(latLng);
-        city.initializeRoads();
+        City city = new City(latLng);
+        city.initalizeCity(streetNames);
+        return city;
     }
+
+
 }

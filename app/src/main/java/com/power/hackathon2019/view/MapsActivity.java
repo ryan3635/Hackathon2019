@@ -12,11 +12,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.power.hackathon2019.R;
+import com.power.hackathon2019.controller.CityBuilder;
 import com.power.hackathon2019.model.City;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private CityBuilder cityBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,6 +29,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        this.cityBuilder = new CityBuilder();
     }
 
 
@@ -42,8 +46,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
-        LatLng mountPearlLatLng = new LatLng(47.519467, -52.800441);
-        City mountPearl = new City(mountPearlLatLng);
+        City mountPearl = cityBuilder.buildCity(new LatLng(47.519467, -52.800441));
 
         mMap = googleMap;
 
