@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.power.hackathon2019.R;
 import com.power.hackathon2019.controller.CityBuilder;
 import com.power.hackathon2019.model.City;
+import com.power.hackathon2019.model.Marker;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -47,19 +48,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
-        City mountPearl = cityBuilder.buildCity(new LatLng(47.519467, -52.800441));
-
         mMap = googleMap;
 
-        // Add a marker in Mount Pearl and move the camera
-        LatLng marker1 = new LatLng(47.520353, -52.806221);
-        googleMap.addMarker(new MarkerOptions().position(marker1)
-                .title("Fire Hydrant")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.hydrant25)));
+        City mountPearl = cityBuilder.buildCity(new LatLng(47.519467, -52.800441));
 
-        //mMap.addMarker(new MarkerOptions().position(mountPearl).title("Marker in Mount Pearl"));
+        moveCamera(mountPearl);
+
+        displayMarkers(googleMap, mountPearl);
+    }
+
+    private void moveCamera(City mountPearl) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(mountPearl.getLatLng()));
-        mMap.setMinZoomPreference(13.5f);
+        mMap.setMinZoomPreference(12.0f);
         mMap.setMaxZoomPreference(22.0f);
+    }
+
+    private void displayMarkers(GoogleMap googleMap, City mountPearl)
+    {
+        for (Marker marker : mountPearl.getAllMarkers())
+        {
+            googleMap.addMarker(new MarkerOptions().position(marker.getLatlng())
+                    .title(marker.getMarkerName())
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.hydrant25)));
+        }
     }
 }

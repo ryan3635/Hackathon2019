@@ -16,9 +16,7 @@ public class CityBuilder implements Serializable
     public City buildCity(LatLng latLng)
     {
         City city = new City(latLng);
-        city.initalizeCity(streetNames);
+        city.initalizeCity();
         return city;
     }
-
-
 }

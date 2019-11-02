@@ -36,9 +36,19 @@ public class City
         return this.streets;
     }
 
-    public void initalizeCity(String file)
+    public Collection<Marker> getAllMarkers()
     {
-        this.initializeStreets(StreetBuilder.createStreetsFromCSV(file));
+        Collection<Marker> allMarkers = new ArrayList<>();
+        for (Street street : this.streets)
+        {
+            allMarkers.addAll(street.getMarkers());
+        }
+        return allMarkers;
+    }
+
+    public void initalizeCity()
+    {
+        this.initializeStreets(StreetBuilder.createStreetsFromCSV());
     }
 
     private void initializeStreets(Collection<Street> streets)

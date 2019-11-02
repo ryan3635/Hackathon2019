@@ -5,6 +5,13 @@ import com.google.android.gms.maps.model.LatLng;
 public class Marker
 {
     private LatLng latlng;
+    private String markerName = "Fire Hydrant";
+
+    public Marker (String markerName, LatLng latlng)
+    {
+        this.markerName = markerName;
+        this.latlng = latlng;
+    }
 
     public Marker (LatLng latlng)
     {
@@ -19,5 +26,10 @@ public class Marker
     public LatLng getLatlng()
     {
         return latlng;
+    }
+
+    public String getMarkerName()
+    {
+        return markerName;
     }
 }

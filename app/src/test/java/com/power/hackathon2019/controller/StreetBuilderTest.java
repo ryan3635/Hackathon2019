@@ -15,7 +15,7 @@ public class StreetBuilderTest
     public void test()
     {
         Collection<Street> streets =
-                StreetBuilder.createStreetsFromCSV("../app/resources/streetnames.csv");
+                StreetBuilder.createStreetsFromCSV();
 
         Assert.assertThat(streets.size(), is(274));
     }
