@@ -27,9 +27,10 @@ public class MainActivity extends Activity {
 
         reportButton = findViewById(R.id.button);
         hydrantInfo = findViewById(R.id.hydrantInfo);
-        radioGroup = findViewById(R.id.radioGroup);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         clear = findViewById(R.id.radioButton2);
         needsClearing = findViewById(R.id.radioButton);
+
         //initialize map
 
         //~~~~~~UPDATING HYDRANT STATUS TEXT~~~~~~~~~
@@ -37,33 +38,13 @@ public class MainActivity extends Activity {
             //hydrantInfo = *hydrant name* + "\n" + "Coordinates: " + LatLng
             // + "\n" + *hydrant status? i.e. Clear, Needs Clearing*
 
-
-
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cleared == true)
-                    Toast.makeText(getApplicationContext(), R.string.youCleared, Toast.LENGTH_SHORT).show();
-                else if (cleared == false)
-                    Toast.makeText(getApplicationContext(), R.string.needsClearing, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.confirmation, Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    public void onRadioButtonClicked(View view) {
-        boolean check = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radioButton:
-                if (check)
-                    cleared = false;
-                    break;
-            case R.id.radioButton2:
-                if (check)
-                    cleared = true;
-                    break;
-        }
-    }
 }
