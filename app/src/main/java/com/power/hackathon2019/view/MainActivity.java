@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
 
         Button reportButton = findViewById(R.id.button);
-        TextView hydrantInfo = findViewById(R.id.hydrantInfo);
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
         RadioButton clear = findViewById(R.id.radioButton2);
         RadioButton needsClearing = findViewById(R.id.radioButton);

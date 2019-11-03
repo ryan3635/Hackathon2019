@@ -28,11 +28,11 @@
         android:layout_height="392dp"
         android:orientation="horizontal">
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            android:name="com.google.android.gms.maps.MapFragment"
+        <fragment
             android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
@@ -48,21 +48,6 @@
 
         <LinearLayout
             android:layout_width="218dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/hydrantInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/noneSelected"
-                android:textColor="#FF5722"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="190dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -85,12 +70,19 @@
                     android:text="@string/radio2"
                     android:textSize="18sp" />
             </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="190dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="75dp"
                 android:background="#FF5722"
                 android:text="@string/reportButton"
                 android:textSize="18sp"

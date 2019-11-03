@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Hackathon2019</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Hackathon2019</string>
     <string name="mainPageTitle">City of Mount Pearl - Fire Hydrant Snow Clearing</string>
     <string name="reportButton">Report</string>
     <string name="hydrantStatus">Fire Hydrant Status</string>
     <string name="radio1">Needs Clearing</string>
     <string name="radio2">Cleared it Myself!</string>
-    <string name="noneSelected">No Fire Hydrant Selected!</string>
     <string name="confirmation">Your message has been received!</string>
 </resources>
