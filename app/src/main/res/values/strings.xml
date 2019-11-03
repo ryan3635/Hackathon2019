@@ -7,6 +7,5 @@
     <string name="radio1">Needs Clearing</string>
     <string name="radio2">Cleared it Myself!</string>
     <string name="noneSelected">No Fire Hydrant Selected!</string>
-    <string name="needsClearing">Help is on the way soon!</string>
-    <string name="youCleared">Thank you for your help!</string>
+    <string name="confirmation">Your message has been received!</string>
 </resources>

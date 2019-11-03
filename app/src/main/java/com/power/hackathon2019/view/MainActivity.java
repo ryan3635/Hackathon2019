@@ -45,10 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cleared == true)
-                    Toast.makeText(getApplicationContext(), R.string.youCleared, Toast.LENGTH_SHORT).show();
-                else if (cleared == false)
-                    Toast.makeText(getApplicationContext(), R.string.needsClearing, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.confirmation, Toast.LENGTH_SHORT).show();
             }
         });
 
