@@ -4,20 +4,30 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Marker
 {
-    private LatLng latlng;
+    private LatLng latLng;
+    private String markerName;
+    private MarkerStatus markerStatus;
 
-    public Marker (LatLng latlng)
+
+    public Marker(String markerName, LatLng latLng)
     {
-        this.latlng = latlng;
+        this.markerName = markerName;
+        this.latLng = latLng;
+        this.markerStatus = MarkerStatus.SNOW_COVERED;
     }
 
-    public Marker (double lat, double lng)
+    public LatLng getLatLng()
     {
-        this.latlng = new LatLng(lat, lng);
+        return latLng;
     }
 
-    public LatLng getLatlng()
+    public String getMarkerName()
     {
-        return latlng;
+        return markerName;
+    }
+
+    public MarkerStatus getMarkerStatus()
+    {
+        return markerStatus;
     }
 }

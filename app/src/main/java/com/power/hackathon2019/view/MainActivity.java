@@ -1,13 +1,17 @@
 package com.power.hackathon2019.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -18,34 +22,56 @@ import com.power.hackathon2019.model.Hydrant;
 import com.power.hackathon2019.model.Marker;
 import com.power.hackathon2019.model.MarkerStatus;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+import androidx.appcompat.app.AppCompatActivity;
 
+
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback
+{
+    private boolean cleared;
     private GoogleMap mMap;
     private CityBuilder cityBuilder;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        setContentView(R.layout.activity_main);
+
+        Button reportButton = findViewById(R.id.button);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        RadioButton clear = findViewById(R.id.radioButton2);
+        RadioButton needsClearing = findViewById(R.id.radioButton);
+
+        reportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.confirmation, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         this.cityBuilder = new CityBuilder();
     }
 
+    public void onRadioButtonClicked(View view)
+    {
+        boolean check = ((RadioButton) view).isChecked();
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radioButton:
+                if (check)
+                    cleared = false;
+                    break;
+            case R.id.radioButton2:
+                if (check)
+                    cleared = true;
+                    break;
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap)
     {

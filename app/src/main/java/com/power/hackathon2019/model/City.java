@@ -1,12 +1,14 @@
 package com.power.hackathon2019.model;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.power.hackathon2019.controller.StreetBuilder;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class City
 {
-    private ArrayList<Road> roads;
+    private ArrayList<Street> streets;
     private LatLng latLng;
 
     public City()
@@ -29,14 +31,28 @@ public class City
         return latLng;
     }
 
-    public ArrayList<Road> getRoads()
+    public ArrayList<Street> getStreets()
     {
-        return this.roads;
+        return this.streets;
     }
 
-    public void initializeRoads()
+    public Collection<Marker> getAllMarkers()
     {
-        this.roads = new ArrayList<>();
-        //create roads
+        Collection<Marker> allMarkers = new ArrayList<>();
+        for (Street street : this.streets)
+        {
+            allMarkers.addAll(street.getMarkers());
+        }
+        return allMarkers;
+    }
+
+    public void initalizeCity()
+    {
+        this.initializeStreets(StreetBuilder.createStreetsFromCSV());
+    }
+
+    private void initializeStreets(Collection<Street> streets)
+    {
+        this.streets = new ArrayList<>(streets);
     }
 }
